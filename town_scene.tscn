@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Imports/landscape-WITH_PHYSICS.escn" type="PackedScene" id=1]
+[ext_resource path="res://town_scene.gd" type="Script" id=2]
+
+[node name="TownScene" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="InstancePos" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 16.8439, 1 )
+
+[node name="Back" type="Button" parent="."]
+margin_left = 17.0
+margin_top = 9.0
+margin_right = 85.0
+margin_bottom = 41.0
+text = "<- Back!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back2" type="Button" parent="."]
+margin_left = 17.0
+margin_top = 9.0
+margin_right = 85.0
+margin_bottom = 41.0
+text = "<- Back!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.629475, 0.777021, 0, -0.777021, -0.629475, -33.2753, 23.825, -25.1039 )
+light_bake_mode = 2
+shadow_enabled = true
+
+[node name="MuhRayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8928, 35, 0 )
+enabled = true
+cast_to = Vector3( 0, -111, 0 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="landscape-WITH_PHYSICS" parent="." instance=ExtResource( 1 )]
+transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0 )
