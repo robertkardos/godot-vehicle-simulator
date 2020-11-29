@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Imports/landscape-WITH_PHYSICS.escn" type="PackedScene" id=1]
+[ext_resource path="res://multimaterial_COLONLY.tscn" type="PackedScene" id=1]
 [ext_resource path="res://town_scene.gd" type="Script" id=2]
 
 [node name="TownScene" type="Spatial"]
@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="Back2" type="Button" parent="."]
+visible = false
 margin_left = 17.0
 margin_top = 9.0
 margin_right = 85.0
@@ -41,5 +42,4 @@ cast_to = Vector3( 0, -111, 0 )
 collision_mask = 2
 collide_with_areas = true
 
-[node name="landscape-WITH_PHYSICS" parent="." instance=ExtResource( 1 )]
-transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0 )
+[node name="multimaterial_COLONLY" parent="." instance=ExtResource( 1 )]

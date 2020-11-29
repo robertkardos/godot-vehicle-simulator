@@ -10,10 +10,7 @@ extends Spatial
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func set_wheel_friction(friction):
 	var root = get_node("/root")
 	var car = root.find_node('car', true, false)
 	var carbody = car.get_node("Body")
@@ -21,16 +18,32 @@ func _process(delta):
 	var wheel2 = car.get_node("Body/Wheel2")
 	var wheel3 = car.get_node("Body/Wheel3")
 	var wheel4 = car.get_node("Body/Wheel4")
+	wheel1.wheel_friction_slip = friction
+	wheel2.wheel_friction_slip = friction
+	wheel3.wheel_friction_slip = friction
+	wheel4.wheel_friction_slip = friction
 	
-#	print(carbody.get_engine_force())
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
 	if $MuhRayCast.is_colliding():
-		var wat = $MuhRayCast.get_collider().get_physics_material_override()
+		var collider = $MuhRayCast.get_collider()
+		print(collider.name)
+		match collider.name:
+			"Landscape_ice":
+				set_wheel_friction(0.2)
+			"Landscape_dirt":
+				set_wheel_friction(1)
+			"Landscape_grass":
+				set_wheel_friction(0.5)
 		
-		wheel1.wheel_friction_slip = wat.friction
-		wheel2.wheel_friction_slip = wat.friction
-		wheel3.wheel_friction_slip = wat.friction
-		wheel4.wheel_friction_slip = wat.friction
-		print(wat.friction)
-		if $MuhRayCast.get_collider().get_node_or_null("MeshInstance"):
-			print($MuhRayCast.get_collider().get_node("MeshInstance").mesh.material)
-			var asd = 2
+#		var mat = colParent.get_surface_material(0)
+#		var mat1 = colParent.get_surface_material(1)
+#		if mat1:
+#			print(mat1.resource_name)
+#		else:
+#			print(mat.resource_name)
+
+#		print(physicsMatOverride.friction)
+#		if $MuhRayCast.get_collider().get_node_or_null("MeshInstance"):
+#			print($MuhRayCast.get_collider().get_node("MeshInstance").mesh.material)
+#			var asd = 2

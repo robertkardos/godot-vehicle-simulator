@@ -5,7 +5,7 @@ const STEER_LIMIT = 0.4
 
 var steer_target = 0
 
-export var engine_force_value = 140
+export var engine_force_value = 240
 
 func _physics_process(delta):
 	var MuhRayCast = get_node("/root/TownScene/MuhRayCast")
