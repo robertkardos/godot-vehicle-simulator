@@ -1094,7 +1094,7 @@ scene={
 "meshes/light_baking": 0,
 "meshes/lightmap_texel_size": 0.1,
 "meshes/storage": 1,
-"nodes/custom_script": "",
+"nodes/custom_script": "res://muh_custom_import_script.gd",
 "nodes/root_name": "Scene Root",
 "nodes/root_scale": 1.0,
 "nodes/root_type": "Spatial",
