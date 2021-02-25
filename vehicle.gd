@@ -1,7 +1,7 @@
 extends VehicleBody
 
-const STEER_SPEED = 3
-const STEER_LIMIT = 0.4
+const STEER_SPEED = 5
+const STEER_LIMIT = 1
 
 var steer_target = 0
 

@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://town_scene.gd" type="Script" id=1]
-[ext_resource path="res://TESTMAP.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Imports/map0_small.glb" type="PackedScene" id=2]
+[ext_resource path="res://DebugOverlay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CAR_nophys.tscn" type="PackedScene" id=4]
 
 [node name="TownScene" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="InstancePos" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4035, 14.1155, 90.2917 )
+transform = Transform( 0.99899, 0, 0.0449271, 0, 1, 0, -0.0449271, 0, 0.99899, 5.86929, 213.471, -54.4993 )
 
 [node name="Back" type="Button" parent="."]
 margin_left = 17.0
@@ -42,4 +44,10 @@ cast_to = Vector3( 0, -111, 0 )
 collision_mask = 2
 collide_with_areas = true
 
-[node name="TESTMAP" parent="." instance=ExtResource( 2 )]
+[node name="map0_small" parent="." instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+
+[node name="CAR_nophys" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 209.906, -54.5296 )
+
+[node name="DebugOverlay" parent="." instance=ExtResource( 3 )]

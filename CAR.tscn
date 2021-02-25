@@ -1,0 +1,145 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://RigidBody_Car.gd" type="Script" id=1]
+[ext_resource path="res://Imports/Wheel_Front_L.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://Imports/Wheel_Front_R.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://Imports/CarBody.mesh" type="ArrayMesh" id=5]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 2.47518 )
+
+[sub_resource type="PhysicsMaterial" id=3]
+rough = true
+absorbent = true
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.703849
+height = 0.399822
+
+[sub_resource type="PhysicsMaterial" id=5]
+
+[sub_resource type="PhysicsMaterial" id=6]
+
+[sub_resource type="CylinderShape" id=7]
+
+[node name="CAR" type="Spatial"]
+
+[node name="RigidBody_Car" type="RigidBody" parent="."]
+mass = 48.51
+physics_material_override = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="CarBody" type="MeshInstance" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00644875, 0.410591, -0.00887632 )
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62322, 1.49426 )
+shape = SubResource( 2 )
+
+[node name="RigidBody_Wheel_Front_L" type="RigidBody" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.7, 2.5 )
+physics_material_override = SubResource( 3 )
+
+[node name="Wheel" type="MeshInstance" parent="RigidBody_Car/RigidBody_Wheel_Front_L"]
+transform = Transform( 0, -0.2, 0, 0.7, 0, 0, 0, 0, 0.7, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car/RigidBody_Wheel_Front_L"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="HingeJoint" type="HingeJoint" parent="RigidBody_Car/RigidBody_Wheel_Front_L"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../..")
+angular_limit/enable = true
+angular_limit/upper = 180.0
+motor/enable = true
+motor/target_velocity = 0.0
+motor/max_impulse = 50.0
+
+[node name="RigidBody_Wheel_Rear_L" type="RigidBody" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.7, 0 )
+physics_material_override = SubResource( 3 )
+
+[node name="Wheel" type="MeshInstance" parent="RigidBody_Car/RigidBody_Wheel_Rear_L"]
+transform = Transform( 0, -0.2, 0, 0.7, 0, 0, 0, 0, 0.7, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car/RigidBody_Wheel_Rear_L"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="HingeJoint" type="HingeJoint" parent="RigidBody_Car/RigidBody_Wheel_Rear_L"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../..")
+angular_limit/enable = true
+angular_limit/upper = 180.0
+motor/enable = true
+motor/target_velocity = 0.0
+motor/max_impulse = 50.0
+
+[node name="RigidBody_Wheel_Front_R" type="RigidBody" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.7, 2.5 )
+physics_material_override = SubResource( 5 )
+
+[node name="Wheel" type="MeshInstance" parent="RigidBody_Car/RigidBody_Wheel_Front_R"]
+transform = Transform( 0, -0.2, 0, 0.7, 0, 0, 0, 0, 0.7, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car/RigidBody_Wheel_Front_R"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="HingeJoint" type="HingeJoint" parent="RigidBody_Car/RigidBody_Wheel_Front_R"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.05, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../..")
+angular_limit/enable = true
+angular_limit/upper = 180.0
+motor/enable = true
+motor/target_velocity = 0.0
+motor/max_impulse = 50.0
+
+[node name="RigidBody_Wheel_Rear_R" type="RigidBody" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.7, 0 )
+physics_material_override = SubResource( 6 )
+
+[node name="Wheel" type="MeshInstance" parent="RigidBody_Car/RigidBody_Wheel_Rear_R"]
+transform = Transform( 0, -0.2, 0, 0.7, 0, 0, 0, 0, 0.7, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car/RigidBody_Wheel_Rear_R"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="HingeJoint" type="HingeJoint" parent="RigidBody_Car/RigidBody_Wheel_Rear_R"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.05, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../..")
+angular_limit/enable = true
+angular_limit/upper = 180.0
+motor/enable = true
+motor/target_velocity = 0.0
+motor/max_impulse = 50.0
+
+[node name="RigidBodyASD" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6164, 1.71524, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBodyASD"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="Wheel_Front_R2" type="MeshInstance" parent="RigidBodyASD"]
+transform = Transform( 0, -0.2, 0, 0.7, 0, 0, 0, 0, 0.7, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null

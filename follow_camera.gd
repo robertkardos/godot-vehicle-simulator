@@ -5,7 +5,7 @@ export var max_distance = 4.0
 export var angle_v_adjust = 0.0
 
 var collision_exception = []
-var max_height = 2.0
+var max_height = 3.0
 var min_height = 0
 
 func _ready():
@@ -26,22 +26,28 @@ func _physics_process(_delta):
 	var target = get_parent().get_global_transform().origin
 	var pos = get_global_transform().origin
 	
+	
+	
 #	var from_target = pos - target
-#
-#	# Check ranges.
+##	# Check ranges.
 #	if from_target.length() < min_distance:
 #		from_target = from_target.normalized() * min_distance
 #	elif from_target.length() > max_distance:
 #		from_target = from_target.normalized() * max_distance
-#
+##
 #	# Check upper and lower height.
 #	if from_target.y > max_height:
 #		from_target.y = max_height
 #	if from_target.y < min_height:
 #		from_target.y = min_height
-
+#
 #	pos = target + from_target
-	pos = target + Vector3(5, 11, 5)
+	
+	pos = target + Vector3(4, 8, 4)
+	
+	
+	
+	
 	
 	look_at_from_position(pos, target, Vector3.UP)
 	

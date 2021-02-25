@@ -27,13 +27,12 @@ func set_wheel_friction(friction):
 func _process(delta):
 	if $MuhRayCast.is_colliding():
 		var collider = $MuhRayCast.get_collider()
-		print(collider.name)
 		match collider.name:
-			"Landscape_ice":
-				set_wheel_friction(0.2)
-			"Landscape_dirt":
+#			"Landscape_ice":
+#				set_wheel_friction(0.2)
+			"Asphalt":
 				set_wheel_friction(1)
-			"Landscape_grass":
+			"Grass":
 				set_wheel_friction(0.5)
 		
 #		var mat = colParent.get_surface_material(0)
