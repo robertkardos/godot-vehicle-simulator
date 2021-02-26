@@ -21,10 +21,10 @@ var breakingForceVec = Vector3(0, 0, 0)
 func _ready():
 	dirIndicator = self.transform.basis.z
 	
-	DebugOverlay.draw.add_vector(self, "dirIndicator", 1, 4, Color(0,1,1, 0.5))
-	DebugOverlay.draw.add_vector(self, "forcesOnWheel", 1, 4, Color(1,1,1, 0.5))
-	DebugOverlay.draw.add_vector(self, "engineForceVec", 1, 4, Color(0,1,0, 0.5))
-	DebugOverlay.draw.add_vector(self, "breakingForceVec", 1, 4, Color(1,0,0, 0.5))
+	DebugOverlay.draw.add_vector(self, "dirIndicator", Vector3(), 1, 4, Color(0,1,1, 0.5))
+	DebugOverlay.draw.add_vector(self, "forcesOnWheel", Vector3(), 1, 4, Color(1,1,1, 0.5))
+	DebugOverlay.draw.add_vector(self, "engineForceVec", Vector3(), 1, 4, Color(0,1,0, 0.5))
+	DebugOverlay.draw.add_vector(self, "breakingForceVec", Vector3(), 1, 4, Color(1,0,0, 0.5))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

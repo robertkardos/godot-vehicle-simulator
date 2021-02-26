@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://RigidBody_Car.gd" type="Script" id=1]
+[ext_resource path="res://WheelCast.gd" type="Script" id=2]
 [ext_resource path="res://Imports/Wheel_Front_R.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://wheel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Imports/CarBody.mesh" type="ArrayMesh" id=5]
@@ -37,12 +38,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00644875, 0.410591, -0.00887
 mesh = ExtResource( 5 )
 material/0 = null
 
+[node name="Indicator" type="MeshInstance" parent="RigidBody_Car"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.00645, -0.589409, -0.00887632 )
+visible = false
+mesh = ExtResource( 5 )
+material/0 = null
+
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62322, 1.49426 )
 shape = SubResource( 2 )
 
+[node name="WheelCast_FL" type="RayCast" parent="RigidBody_Car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.65, 3 )
+enabled = true
+collision_mask = 3
+script = ExtResource( 2 )
+
 [node name="RigidBodyASD" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3836, 3.71524, 0 )
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBodyASD"]
 transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
