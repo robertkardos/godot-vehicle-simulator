@@ -1,27 +1,12 @@
-# Truck Town
+# Godot Vehicle Simulator (WIP)
+This is a work in progress attempt at making a semi-realistic vehicle simulator in Godot.
 
-This is a demo implementing different types of trucks of
-varying complexity using vehicle physics.
+I've used this guide for the raycast-based suspension and lateral forces: https://www.gtplanet.net/forum/threads/wolfes-simulator-workshop-devlog.396400/
 
-Do not be surprised if everything is bouncy and glitchy,
-Godot's physics system is not polished and will likely be
-reworked in the future.
+I'm constantly looking for examples, tutorials and other information regarding this topic, if you have something you could share with me, please do reach out and send it to me.
+
+## STATUS:
+The next part I want to implement is applying torque on the wheels.
+
 
 Language: GDScript
-
-Renderer: GLES 2
-
-## How does it work?
-
-The base vehicle uses a
-[`VehicleBody`](https://docs.godotengine.org/en/latest/classes/class_vehiclebody.html)
-node. The trailer truck is tied together using a
-[`ConeJointTwist`](https://docs.godotengine.org/en/latest/classes/class_conetwistjoint.html)
-node, and the tow truck is tried together using a chain made of
-[`RigidBody`](https://docs.godotengine.org/en/latest/classes/class_rigidbody.html)
-nodes which are pinned together using
-[`PinJoint`](https://docs.godotengine.org/en/latest/classes/class_pinjoint.html) nodes.
-
-## Screenshots
-
-![Screenshot](screenshots/tow.png)
