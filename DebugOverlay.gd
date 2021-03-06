@@ -1,6 +1,12 @@
 extends CanvasLayer
 
 onready var draw = $DebugDraw3D
+onready var wheelText = {
+	"fl": $fl,
+	"fr": $fr,
+	"rl": $rl,
+	"rr": $rr
+}
 
 func _ready():
 	if not InputMap.has_action("toggle_debug"):

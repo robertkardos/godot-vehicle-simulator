@@ -22,7 +22,7 @@ class Vector:
 		var start = camera.unproject_position(basePosition)
 		var end = camera.unproject_position(basePosition + object.get(value) * scale)
 		node.draw_line(start, end, color, width)
-		node.draw_triangle(end, start.direction_to(end), width*2, color)
+		node.draw_triangle(end, start.direction_to(end), width * 2, color)
 
 var vectors = []  # Array to hold all registered values.
 
