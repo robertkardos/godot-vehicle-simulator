@@ -1151,6 +1151,7 @@ handbrake={
 [physics]
 
 3d/physics_engine="Bullet"
+3d/active_soft_world=false
 2d/thread_model=2
 
 [rasterizer]

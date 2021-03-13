@@ -4,15 +4,17 @@ class Vector:
 	var object  # The node to follow
 	var property  # The property to draw
 	var posOffset
+	var isRotated
 	var scale  # Scale factor
 	var width  # Line width
 	var color  # Draw color
 	var value  # ASDASD
 
-	func _init(_object, _property, _posOffset, _scale, _width, _color):
+	func _init(_object, _property, _posOffset, _isRotated, _scale, _width, _color):
 		object = _object
 		value = _property
 		posOffset = _posOffset
+		isRotated = _isRotated
 		scale = _scale
 		width = _width
 		color = _color
@@ -20,7 +22,13 @@ class Vector:
 	func draw(node, camera):
 		var basePosition = object.global_transform.origin + posOffset
 		var start = camera.unproject_position(basePosition)
-		var end = camera.unproject_position(basePosition + object.get(value) * scale)
+		
+		var end
+		if isRotated:
+			end = camera.unproject_position(basePosition + object.get_parent().transform.basis.xform(object.get(value)) * scale)
+		else:
+			end = camera.unproject_position(basePosition + object.get(value) * scale)
+		
 		node.draw_line(start, end, color, width)
 		node.draw_triangle(end, start.direction_to(end), width * 2, color)
 
@@ -39,8 +47,8 @@ func _draw():
 		vector.draw(self, camera)
 
 
-func add_vector(object, property, posOffset, scale, width, color):
-	vectors.append(Vector.new(object, property, posOffset, scale, width, color))
+func add_vector(object, property, posOffset, isRotated, scale, width, color):
+	vectors.append(Vector.new(object, property, posOffset, isRotated, scale, width, color))
 
 
 

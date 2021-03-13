@@ -7,8 +7,8 @@
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.392
 
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -1, 1.8, -0.680299, -1, 0.7, 2.5, 1, 0.7, 2.5, 1, 1.8, -0.680299, -1, 0.7, 2.5, -1, -4.47035e-08, 2.5, 1, 1.49012e-07, 2.5, 1, 0.7, 2.5, -1, 1.07789, -2, -1, -4.47035e-08, -2, -1, -4.47035e-08, 2.5, -1, 0.7, 2.5, -1, 1.8, -0.680299, -1, -4.47035e-08, 2.5, -1, -4.47035e-08, -2, 1, -4.47035e-08, -2, 1, 1.49012e-07, 2.5, 1, 1.49012e-07, 2.5, 1, -4.47035e-08, -2, 1, 1.07789, -2, 1, 0.7, 2.5, 1, 1.8, -0.680299, 1, 1.07789, -2, 1, -4.47035e-08, -2, -1, -4.47035e-08, -2, -1, 1.07789, -2, 1, 1.8, -0.680299, -1, 1.8, -0.680299 )
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 2.24373 )
 
 [sub_resource type="CylinderShape" id=3]
 
@@ -27,7 +27,7 @@ mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody_Car"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0.5 )
 shape = SubResource( 2 )
 
 [node name="WheelCast_FL" type="RayCast" parent="RigidBody_Car"]

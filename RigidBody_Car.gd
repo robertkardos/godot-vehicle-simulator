@@ -4,6 +4,9 @@ var wheels
 
 var turnDegree = 0
 var TESTVECTOR = Vector3(0, 0, 0)
+var unSteeringFactor = 4
+var isSteering = false
+var maxTurnDegree = PI / 2.6
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +20,24 @@ func _ready():
 	self.getWheels()
 
 func _physics_process(delta):
+	if not isSteering:
+		var unSteerStep = unSteeringFactor * delta
+		if turnDegree < 0 - unSteerStep:
+			turnDegree += unSteerStep
+		elif turnDegree > 0 + unSteerStep:
+			turnDegree -= unSteerStep
+		else:
+			turnDegree = 0
+	
+	wheels["fl"].rotation.y = turnDegree
+	wheels["fr"].rotation.y = turnDegree
+	
+	print(turnDegree)
+	isSteering = false
+	
 	for wheelName in wheels:
 		var wheel = wheels[wheelName]
+		wheel.calculate(delta)
 	
 #		if wheel.is_colliding():
 ##			add_force(wheel.normal * wheel.getUpwardForce(), wheel.transform.origin + wheel.collPoint)
@@ -47,18 +66,27 @@ func _physics_process(delta):
 #
 	
 	if Input.is_key_pressed(KEY_SPACE):
-		self.handbrake()
+		handbrake()
 	if Input.is_key_pressed(KEY_T):
-		self.addGas()
+		addGas()
 	if Input.is_key_pressed(KEY_F):
-		turn(0.1)
+		steer(0.1, 1, 0.15)
+	if Input.is_key_pressed(KEY_G):
+		brake()
 	if Input.is_key_pressed(KEY_H):
-		turn(-0.1)
+		steer(-0.1, 1, 0.15)
 	if Input.is_key_pressed(KEY_V):
 		wheels["fl"].global_transform.origin
 		add_force(Vector3(0, 111, 0), Vector3(1, 1, 1))
 	if Input.is_key_pressed(KEY_B):
 		add_force(Vector3(0, -111, 0), Vector3(1, 1, 1))
+
+func steer(input, max_steer, ackermann):
+	if abs(turnDegree) <= maxTurnDegree:
+		turnDegree = turnDegree + input
+	isSteering = true
+#	turnDegree = max_steer * (input + (1 - cos(input * 0.5 * PI)) * ackermann)
+#	turnDegree = max_steer * (input + (1 - cos(input * 0.5 * PI)) * -ackermann)
 
 func getWheels():
 	wheels = {
@@ -75,10 +103,14 @@ func getWheels():
 func addGas():
 	pass
 	
+func brake():
+	pass
+	
 func handbrake():
 	pass
 	
 func turn(deg):
+	turnDegree = turnDegree + deg
 	pass
 
 

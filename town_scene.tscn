@@ -9,7 +9,7 @@
 script = ExtResource( 1 )
 
 [node name="InstancePos" type="Position3D" parent="."]
-transform = Transform( 0.99899, 0, 0.0449271, 0, 1, 0, -0.0449271, 0, 0.99899, 5.86929, 213.471, -54.4993 )
+transform = Transform( 0.99899, 0, 0.0449271, 0, 1, 0, -0.0449271, 0, 0.99899, 27.123, 1.9009, 24.3057 )
 
 [node name="Back" type="Button" parent="."]
 margin_left = 17.0
@@ -44,10 +44,10 @@ cast_to = Vector3( 0, -111, 0 )
 collision_mask = 2
 collide_with_areas = true
 
-[node name="map0_small" parent="." instance=ExtResource( 2 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
-
 [node name="CAR_nophys" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 209.906, -54.5296 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4463, 5.81537, 22.5047 )
 
 [node name="DebugOverlay" parent="." instance=ExtResource( 3 )]
+
+[node name="map0_small" parent="." instance=ExtResource( 2 )]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
